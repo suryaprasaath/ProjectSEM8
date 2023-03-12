@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newstracker
+  labels:
+    app: newstracker
+spec:
+  selector:
+    matchLabels:
+      app: newstracker
+  template:
+    metadata:
+      labels:
+        app: newstracker
+    spec:
+      containers:
+        - name: newstracker
+          image: suryaprasaath/newstracker:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
