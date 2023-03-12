@@ -42,7 +42,7 @@ def register():
         else:
             hashed_password=hashlib.sha256(password.encode()).hexdigest()
             cur = mysql.connection.cursor()  
-            cur.execute("SELECT * FROM newstracker WHERE username=%s", username)
+            cur.execute("SELECT * FROM newstracker.user_details WHERE username=%s", [username])
             mysql.connection.commit()
             res=cur.fetchone()
             cur.close()
@@ -51,7 +51,7 @@ def register():
                  
             else:
                 cur = mysql.connection.cursor()  
-                cur.execute("INSERT INTO newstracker VALUES (%s,%s,%s)", (username,email,hashed_password))
+                cur.execute("INSERT INTO newstracker.user_details (username,email,password) VALUES (%s,%s,%s)", (username,email,hashed_password))
                 mysql.connection.commit()
                 cur.close()
                 
@@ -69,13 +69,13 @@ def login():
         hashed=hashlib.sha256(password.encode()).hexdigest()
         
         cur = mysql.connection.cursor()  
-        cur.execute("SELECT * FROM newstracker WHERE username=%s", username)
+        cur.execute("SELECT * FROM newstracker.user_details WHERE username=%s", [username])
         mysql.connection.commit()
         res=cur.fetchone()
         cur.close()
          
         if res:
-            if hashed == res['PASSWORD']:
+            if hashed == res['password']:
                 session['username'] = request.form['username']
                 return redirect(url_for('home'))
             else:
@@ -233,7 +233,7 @@ def verify_email():
     if request.method=="POST":
         email=request.form["email"]
         cur = mysql.connection.cursor()  
-        cur.execute("SELECT * FROM newstracker WHERE email=%s", email)
+        cur.execute("SELECT * FROM newstracker.user_details WHERE email=%s", [email])
         mysql.connection.commit()
         res=cur.fetchone()
         cur.close()
@@ -257,7 +257,7 @@ def update_password():
              
             hashed=hashlib.sha256(password.encode()).hexdigest()
             cur = mysql.connection.cursor()      
-            cur.execute("UPDATE newstracker SET password=%s WHERE email=%s", (password,email))
+            cur.execute("UPDATE newstracker.user_details  SET password=%s WHERE email=%s", (hashed,email))
             mysql.connection.commit()
             cur.close()
              
