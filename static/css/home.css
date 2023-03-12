@@ -15,7 +15,7 @@ body {
 	margin: 0;
 	padding: 0;
 	 
-	background-color: #272727;
+	background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,181,1) 0%, rgba(0,212,255,1) 100%);
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
 	letter-spacing: 0;
@@ -35,7 +35,7 @@ nav {
 	border-radius:10px ;
 	width: 98%;
 	margin: 0 auto;
-	background-color: #101011;
+	background-color: #37377a;
 }
 nav .logo {
 	float: left;
