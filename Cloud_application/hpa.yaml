@@ -9,10 +9,11 @@ spec:
     name: newstracker
   minReplicas: 1
   maxReplicas: 5
+  targetCPUUtilizationPercentage: 4
   metrics:
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 20
+        averageUtilization: 4
