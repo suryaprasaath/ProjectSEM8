@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - '.github/**'
       - 'Cloud_application/**'
+      - 'README.md'
   workflow_dispatch: {}
   
 jobs:
