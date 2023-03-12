@@ -18,9 +18,9 @@ jobs:
     - name: Login to Docker Hub
       run: sudo docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Build the Docker image
-      run: sudo docker build . --file Dockerfile --tag suryaprasaath/newstrackerapp:v1.${{ github.run_id }}
+      run: sudo docker build . --file Dockerfile --tag suryaprasaath/newstrackerapp:v1.${{ github.run_number }}
     - name: Push the Docker image
-      run: sudo docker push suryaprasaath/newstrackerapp:v1.${{ github.run_id }}
+      run: sudo docker push suryaprasaath/newstrackerapp:v1.${{ github.run_number }}
     - name: Clean up the Docker image
-      run: sudo docker rmi suryaprasaath/newstrackerapp:v1.${{ github.run_id }}
+      run: sudo docker rmi suryaprasaath/newstrackerapp:v1.${{ github.run_number }}
     
