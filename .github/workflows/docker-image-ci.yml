@@ -7,7 +7,7 @@ on:
       - '.github/**'
       - 'Cloud_application/**'
       - 'README.md'
-      - 'Argo_Rollouts'
+      - 'Argo_Rollouts/**'
   workflow_dispatch: {}
   
 jobs:
