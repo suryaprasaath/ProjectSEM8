@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: newstracker
-          image: suryaprasaath/newstrackerapp:v1.6
+          image: suryaprasaath/newstrackerapp:v1.9
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
